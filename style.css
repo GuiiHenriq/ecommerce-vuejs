@@ -13,6 +13,33 @@ body {
   padding: 0 80px;
 }
 
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.header__logo {
+  width: 80px;
+}
+
+.carrinho__menu::after {
+  content: '';
+  display: inline-block;
+  background: url('./assets/carrinho.svg') no-repeat center center;
+  width: 25px;
+  height: 25px;
+  margin-left: 10px;
+}
+
+.carrinho__menu {
+  display: flex;
+  align-items: center;
+}
+
+
 /* Lista Produtos */
 .produtos {
   max-width: 900px;
@@ -131,6 +158,10 @@ body {
   padding: 10px 25px;
   border: none;
   cursor: pointer;
+}
+
+.modal_btn.estogotado {
+  background: #808080;
 }
 
 .modal_btn:active {
