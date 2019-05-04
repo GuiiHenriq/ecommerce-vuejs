@@ -15,13 +15,14 @@
 
     <div id="app">
 
-        <section v-if="produto" class="modal">
+        <section v-if="produto" class="modal" @click="closeModal">
             <div class="modal__container">
                 <div class="modal__img">
                     <img :src="produto.img" :alt="produto.nome">
                 </div>
 
                 <div class="modal__info">
+                    <button @click="produto = false" class="modal_close">X</button>
                     <span class="modal_preco">{{produto.preco}}</span>
                     <h2 class="modal_nome">{{produto.nome}}</h2>
                     <p>{{produto.descricao}}</p>
@@ -33,7 +34,7 @@
                     <ul>
                         <li v-for="avaliacao in produto.reviews" class="review__list">
                             <p class="review_descricao">{{avaliacao.descricao}}</p>
-                            <p class="review_usuario"></p>>{{avaliacao.nome}} | {{avaliacao.estrelas}}</p>
+                            <p class="review_usuario">{{avaliacao.nome}} | {{avaliacao.estrelas}}</p>
                         </li>
                     </ul>
                 </div>
@@ -41,7 +42,7 @@
         </section>
 
         <section class="produtos">
-            <div v-for="item in produtos" :key="item.id" @click="fetchProduct(item.id)" class="produto">
+            <div v-for="item in produtos" :key="item.id" @click="openModal(item.id)" class="produto">
                 <img :src="item.img" :alt="item.nome" class="produto__img">
                 <div class="produto__info">
                     <span class="produto__preco">{{item.preco | numeroPreco}}</span>
