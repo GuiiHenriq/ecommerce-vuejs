@@ -36,7 +36,7 @@
 
                 <div class="modal__info">
                     <button @click="produto = false" class="modal_close">X</button>
-                    <span class="modal_preco">{{produto.preco}}</span>
+                    <span class="modal_preco">{{produto.preco | numeroPreco}}</span>
                     <h2 class="modal_nome">{{produto.nome}}</h2>
                     <p>{{produto.descricao}}</p>
                     <button v-if="produto.estoque > 0" @click="addCarrinho" class="modal_btn">Adicionar Item</button>
@@ -64,6 +64,11 @@
                 </div>
             </div>
         </section>
+
+
+        <div class="alerta" :class="{ativo: alertaActive}">
+            <p class="alerta__message">{{mensagemAlerta}}</p>
+        </div>
 
     </div>
 
