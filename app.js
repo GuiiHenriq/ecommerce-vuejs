@@ -80,6 +80,15 @@ const vm = new Vue({
             }
         },
 
+        compararEstoque() {
+            const items = this.carrinho.filter(item => {
+                if (item.id === this.produto.id) {
+                    return true;
+                }
+            });
+            this.produto.estoque = this.produto.estoque - items.length;
+        },
+
         alertaCarrinho(msg) {
             this.mensagemAlerta = msg;
             this.alertaActive = true;
@@ -100,6 +109,9 @@ const vm = new Vue({
             document.title = this.produto.nome || 'Tecnho Project';
             const hash = this.produto.id || '';
             history.pushState(null, null, `#${hash}`);
+            if (this.produto) {
+                this.compararEstoque();
+            }
         },
 
         carrinho() {
